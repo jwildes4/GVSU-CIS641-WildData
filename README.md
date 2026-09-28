@@ -1,12 +1,10 @@
-# Team Name
+# Wild Data
 
 Project description (~1 paragraph)
 
 ## Team Members and Roles
 
-* Member 1 (Role 1, Role 2)
-* Member 2 (Role 3, Role 4)
-* Member 3 (Role 5, Role 6)
+* [Jack Wildes](https://github.com/jwildes4/CIS641-HW2-Wildes.git) (Role 1, Role 2)
 
 ## Prerequisites
 
