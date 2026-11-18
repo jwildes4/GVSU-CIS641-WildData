@@ -12,6 +12,6 @@ My ExcelFlow project is a data management system designed to simplify the proces
 
 ## Artifacts & Documents
 
-[Proposal Document](https://github.com/jwildes4/GVSU-CIS641-WildData/blob/main/docs/proposal-template.md)
+[Proposal Document](https://github.com/jwildes4/GVSU-CIS641-WildData/blob/main/docs/proposal.md)
 
 [Software Requirements Specification Document](https://github.com/jwildes4/GVSU-CIS641-WildData/blob/main/docs/software_requirements_specification.md)
