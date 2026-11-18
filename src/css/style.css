@@ -42,3 +42,7 @@ th {
 .error {
     color: #dc2626;
 }
+
+.success {
+    color: #008000;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ExcelFlow - Column Mapping</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>ExcelFlow</h1>
+    <h2>Column Mapping</h2>
+
+    <p>Match each PostgreSQL field to a column from your Excel file.</p>
+
+    {% if errors %}
+        {% for error in errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% if success %}
+        <h3>Column Mapping Saved Successfully!</h3>
+        <p class="success">Your selections are ready for data validation.</p>
+    {% endif %}
+
+    <form method="POST">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>PostgreSQL Field</th>
+                    <th>Excel Column</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for field in database_fields %}
+                <tr>
+                    <td>
+                        {{ field }}
+                        {% if field in required_fields %}
+                            <strong>(Required)</strong>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <select name="{{ field }}">
+                            <option value="">-- Not Mapped --</option>
+
+                            {% for column in excel_columns %}
+                                <option value="{{ column }}"
+                                    {% if selected_mapping[field] == column %}
+                                        selected
+                                    {% endif %}>
+                                    {{ column }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <button type="submit">Save Column Mapping</button>
+    </form>
+
+    <p>
+        <a href="{{ url_for('index') }}">Back to Upload</a>
+    </p>
+
+</body>
+</html>
