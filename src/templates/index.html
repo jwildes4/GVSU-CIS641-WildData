@@ -3,10 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>ExcelFlow</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
     <h1>ExcelFlow</h1>
     <p>Excel-to-PostgreSQL Data Import Tool</p>
-    <p>Flask application is running successfully!</p>
+
+    <h2>Upload Excel Spreadsheet</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xlsx" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if columns %}
+        <h2>Upload Successful!</h2>
+
+        <p><strong>File:</strong> {{ filename }}</p>
+
+        <h3>Detected Columns</h3>
+        <ul>
+            {% for column in columns %}
+                <li>{{ column }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Data Preview (First 5 Rows)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in preview %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
 </body>
 </html>
